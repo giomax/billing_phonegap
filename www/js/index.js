@@ -72,7 +72,7 @@ var app = {
 						  console.log(k);
 						  console.log(data);
 						  if(row.status == 401){
-							  
+							  swal(row.responseJSON.message);
 						  }else{
 							  swal('ვერ მოხერხდა სერვერთან დაკავშირება გთხოვთ ცადეთ მოგვიანებით');  
 						  }
