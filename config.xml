@@ -23,7 +23,6 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.5" />
 	
 	<plugin name="cordova-plugin-whitelist" source="npm" />
-	<plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" />
 	
 	
     <platform name="android">
@@ -51,6 +50,7 @@
 		
 		 <allow-intent href="market:*" />
 		 
+		
 	
     </platform>
     <platform name="windows">
