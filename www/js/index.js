@@ -66,11 +66,17 @@ var app = {
 					  data:{
 						  'email':$("[name='email']").val(),
 						  'password':$("[name='password']").val()
-					  },error:function(row,e,data){
+					  },error:function(row,e,k,data){
 						  console.log(row);
 						  console.log(e);
+						  console.log(k);
 						  console.log(data);
-						swal('ვერ მოხერხდა სერვერთან დაკავშირება გთხოვთ ცადეთ მოგვიანებით');  
+						  if(row.status == 401){
+							  
+						  }else{
+							  swal('ვერ მოხერხდა სერვერთან დაკავშირება გთხოვთ ცადეთ მოგვიანებით');  
+						  }
+						
 						$btn.prop('disabled',false).html("ავტორიზაცია");
 					  },
 					}).done(function(data){
