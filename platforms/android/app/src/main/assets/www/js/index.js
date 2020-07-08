@@ -31,6 +31,8 @@ var app = {
     receivedEvent: function(id) {
 		var base_url = "http://82.211.132.146:1881/api/";
 		var storage = window.localStorage;
+		var networkState = navigator.connection.type;
+		console.log(networkState);
 		
 		if(storage.getItem('access_token')){
 			page('home');
