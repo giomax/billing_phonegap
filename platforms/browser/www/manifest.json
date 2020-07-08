@@ -3,7 +3,7 @@
   "display": "standalone",
   "name": "Billing",
   "short_name": "Billing",
-  "version": "com.phonegap.billing",
+  "version": "com.phonegap.helloworld",
   "description": "BILLING 2.0",
   "author": "AG Team",
   "icons": [],
