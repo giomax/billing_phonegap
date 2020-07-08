@@ -49,6 +49,9 @@
         <splash qualifier="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
 		
 		 <allow-intent href="market:*" />
+		 
+		<uses-permission android:name="android.permission.INTERNET" />
+	
     </platform>
     <platform name="windows">
         <icon height="150" platform="windows" src="www/res/icon/windows/Square150x150Logo.scale-100.png" width="150" />
