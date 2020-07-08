@@ -41,3 +41,28 @@ label{
 .btn-primary{
 	font-family:bpg_arial;
 }
+
+.login{
+	display:none;
+}
+
+.swal2-title{
+	font-size:13px!important;
+	font-family:bpg_arial;
+}
+
+.logo{
+	width:45px;
+}
+.navbar-brand{
+	font-family:bpg_banner_caps;
+}
+.rightMenu li {
+	margin-left:15px;
+}
+.rightMenu li a{
+	color:black;
+}
+.rightMenu li i{
+	color:white;
+}

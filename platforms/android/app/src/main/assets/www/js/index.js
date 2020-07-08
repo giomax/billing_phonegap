@@ -12,8 +12,29 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+	page:function(page){
+		$('.app').html();
+		if(page == 'login'){
+			if($('.login').length > 0)
+				$('.login').show();
+			else 
+				location.reload();
+		}else{
+			$.ajax({
+					  method: "GET",
+					  url: page+'.html'					
+					}).done(function(data){
+						$('.app').html(data);
+					});
+		}
+	},
     receivedEvent: function(id) {
-		var base_url = "http://billing.com.ge/login";
+		var base_url = "http://82.211.132.146:1881/api/";
+		var storage = window.localStorage;
+		
+		if(storage.getItem('access_token')){
+			page('home');
+		}
 		var onSuccess = function(position) {
 			app.debug('Latitude: '          + position.coords.latitude          + '\n' +
 				  'Longitude: '         + position.coords.longitude         + '\n' +
@@ -29,35 +50,37 @@ var app = {
 				  'message: ' + error.message + '\n');
 		}
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
-		app.debug('shemovida');
-		  
+		//first STEP LOGIN PAGE
+		app.page('login');
 		$(document).on('submit', '#login', function(e){
 			var $btn = $("#login [type='submit']");
 			$btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> იტვირთება...').prop('disabled',true);
 			e.preventDefault();
 				$.ajax({
 					  method: "POST",
-					  url: base_url+'login',
+					  url: base_url+'auth/login',
 					  data:{
 						  'email':$("[name='email']").val(),
-						  'password':$("[name='password']").val(),
-						  'captcha':$("[name='captcha']").val(),
-					  }
+						  'password':$("[name='password']").val()
+					  },error:function(){
+						swal('ვერ მოხერხდა სერვერთან დაკავშირება გთხოვთ ცადეთ მოგვიანებით');  
+						$btn.prop('disabled',false).html("ავტორიზაცია");
+					  },
 					}).done(function(data){
-						
 						if(data.code == 0){
-							swal(data.text);
-							$('.capchaform').html(data.capcha+'<i class="fas fa-sync" style="margin-left:10px;cursor:pointer;"></i>');
-							$('[name="captcha"]').val('');
+							swal(data.text);							
 							$btn.prop('disabled',false).html("ავტორიზაცია");
 						}
 						if(data.code == 1){
-							window.location.href = base_url;
-						}
-						if(data.code == 2){
-							window.location.href = base_url+"password_reset";
+							storage.setItem('token_type',data.token_type);
+							storage.setItem('access_token',data.access_token);
+							app.page('home');
 						}
 					});
+		});
+		$(document).on('click', '.logout', function(e){			
+			storage.removeItem('access_token');
+			app.page('login');
 		});
 		
 		
