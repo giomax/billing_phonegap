@@ -35,21 +35,7 @@ var app = {
 		console.log("-------------- NETWORK");
 		console.log(networkState);
 		console.log("-------------- NETWORK");
-		
-		
-		$.ajax({
-					  method: "GET",
-					  url: 'https://google.ge',
-					  error:function(row,e,data){
-						  console.log(row);
-						  console.log(e);
-						  console.log(data);
-					
-					  },
-					}).done(function(data){
-						console.log(data);
-					});
-		
+				
 		if(storage.getItem('access_token')){
 			page('home');
 		}
