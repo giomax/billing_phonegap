@@ -28,6 +28,7 @@
 	
 	
     <platform name="android">
+		<icon src="icon.png" />
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
@@ -65,6 +66,8 @@
         <splash height="1920" platform="windows" src="www/res/screen/windows/SplashScreenPhone.scale-240.png" width="1152" />
     </platform>
     <access origin="*" />
+	<allow-navigation href="http://*/*" />
+	<allow-navigation href="data:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
