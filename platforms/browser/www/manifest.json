@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Billing",
+  "short_name": "Billing",
+  "version": "com.phonegap.billing",
+  "description": "BILLING 2.0 APK",
+  "author": "AG Team",
+  "icons": [],
+  "start_url": "index.html"
+}
