@@ -62,7 +62,10 @@ var app = {
 					  data:{
 						  'email':$("[name='email']").val(),
 						  'password':$("[name='password']").val()
-					  },error:function(){
+					  },error:function(row,e,data){
+						  console.log(row);
+						  console.log(e);
+						  console.log(data);
 						swal('ვერ მოხერხდა სერვერთან დაკავშირება გთხოვთ ცადეთ მოგვიანებით');  
 						$btn.prop('disabled',false).html("ავტორიზაცია");
 					  },

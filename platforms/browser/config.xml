@@ -8,7 +8,11 @@
         AG Team
     </author>
     <content src="index.html" />
+    <icon src="icon.png" />
+    <splash src="icon.png" />
     <access origin="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="data:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
