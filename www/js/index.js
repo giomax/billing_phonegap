@@ -1,7 +1,9 @@
+var base_url = "http://82.211.132.146:1881/api/";
+var storage = window.localStorage;
 var app = {
 	debug:function(text){
-		console.log(text);
-		$('.debug').html(text);
+		//console.log(text);
+		//$('.debug').html(text);
 	},
     initialize: function() {
         this.bindEvents();
@@ -10,7 +12,8 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },    
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        app.receivedEvent('deviceready');		
+		app.functions();
     },
 	page:function(page){
 		$('.app').html();
@@ -20,24 +23,74 @@ var app = {
 			else 
 				location.reload();
 		}else{
-			$.ajax({
+			if(!storage.getItem('user')){
+				app.user();
+			}
+				$.ajax({
 					  method: "GET",
 					  url: page+'.html'					
 					}).done(function(data){
 						$('.app').html(data);
+						$('.userName').html(storage.getItem('user_name'));
+						app.datatable();
 					});
+			
+		}
+	},
+	user:function(){
+		$.ajax({
+					  method: "POST",
+					  url: base_url+'auth/user',
+						headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },					  
+					}).done(function(data){
+						storage.setItem('user_id',data.id);
+						storage.setItem('user_name',data.name);
+						app.debug("----------USER");
+						app.debug(data);
+						app.debug("----------USER");
+					});
+	},
+	datatable:function(){
+		
+		if($('#dataTable').length > 0){
+		lang_url = "js/dataTables.geo.lang";
+		var datatable = $('#dataTable').DataTable({
+		lengthMenu: [25,50,100,500],
+			processing: true,
+			serverSide: true,	
+			rowReorder: false,
+			 
+			dom: "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
+			 "<'row'<'col-sm-12'p>>" +
+			 "<'row'<'col-sm-12'tr>>" +
+			 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+			
+			 ajax: {
+				 headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },					 
+			  url: base_url+"auth/inspection/1",
+			  type: "POST",
+			 },
+			 columns: columns,
+			order: [[0, 'asc']],
+			language: {
+                url: lang_url
+            },
+		  });
 		}
 	},
     receivedEvent: function(id) {
-		var base_url = "http://82.211.132.146:1881/api/";
-		var storage = window.localStorage;
 		var networkState = navigator.connection.type;
-		console.log("-------------- NETWORK");
-		console.log(networkState);
-		console.log("-------------- NETWORK");
+		app.debug("-------------- NETWORK");
+		app.debug(networkState);
+		app.debug("-------------- NETWORK");
+		
+		
+		app.debug("-------------- TOKEN");
+		app.debug(storage);
+		app.debug("-------------- TOKEN");
 				
 		if(storage.getItem('access_token')){
-			page('home');
+			return app.page('home');
 		}
 		var onSuccess = function(position) {
 			app.debug('Latitude: '          + position.coords.latitude          + '\n' +
@@ -92,11 +145,12 @@ var app = {
 					});
 		});
 		
+		
+    },
+	functions:function(){
 		$(document).on('click', '.logout', function(e){			
 			storage.removeItem('access_token');
 			app.page('login');
 		});
-		
-		
-    }
+	}
 };

@@ -66,3 +66,72 @@ label{
 .rightMenu li i{
 	color:white;
 }
+.bg-light {
+    background: #17a2b8 !important;
+}
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.bg-light a {
+    color: white !important;
+	padding: 2px;
+    font-size: 12px;
+	font-family:bpg_arial_caps;
+}
+
+.floatRight {
+	float:right;
+}
+
+.landButtons a{
+	margin-top:15px;
+	display:block;
+}
+
+.content{
+	overflow:hidden;
+}
+
+.my_table{
+	overflow:hidden;
+	position:relative;
+	clear:both;
+	padding:10px;
+	font-family:bpg_arial;
+}
+.pagination, #dataTable_filter{
+	float:right;
+}
+
+.table thead th, .table td{
+	font-size:12px;
+}
+
+.dataTables_length, .dataTables_filter{
+	font-size:12px;
+}
+
+[name="dataTable_length"]{
+	width:auto;
+	display:inline-block;
+}
+
+.hlink {
+    color: #007bff !important;
+    text-align: center;
+    cursor: pointer;
+}
+
+.table a{
+	color:black;
+}
+
+.modal-title, .btn-secondary{
+	font-size:12px;
+	font-family:bpg_arial;
+}
