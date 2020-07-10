@@ -88,6 +88,97 @@ var app = {
 		}
 	},
     receivedEvent: function(id) {
+		
+		
+		AdvancedGeolocation.start(function(data){
+
+                try{
+
+                    var jsonObject = JSON.parse(data);
+
+                    switch(jsonObject.provider){
+                        case "gps":
+                            if(jsonObject.latitude != "0.0"){
+                                console.log("GPS location");
+                                console.log("GPS location detected - lat:" +
+                                    jsonObject.latitude + ", lon: " + jsonObject.longitude +
+                                    ", accuracy: " + jsonObject.accuracy);
+                                
+                            }
+                            break;
+
+                        case "network":
+                            if(jsonObject.latitude != "0.0"){
+                                
+                                console.log("Network ");
+                                console.log("Network location detected - lat:" +
+                                    jsonObject.latitude + ", lon: " + jsonObject.longitude +
+                                    ", accuracy: " + jsonObject.accuracy);
+                               
+                            }
+                            break;
+
+                        case "satellite":
+                            console.log("Satellites  ");
+                            console.log("Satellites detected " + (Object.keys(jsonObject).length - 1));
+                            console.log("Satellite meta-data: " + data);
+                          
+                            break;
+
+                        case "cell_info":
+						console.log("CELL cell_info -------------------");
+                            console.log("cell_info JSON: " + data);
+                            break;
+
+                        case "cell_location":
+							console.log("CELL LOCATION -------------------");
+                            console.log("cell_location JSON: " + data);
+                            break;
+
+                        case "signal_strength":
+                            console.log("SIGNAL STRENGTH: --------------------");
+                            console.log("Signal strength JSON: " + data);
+                            break;
+                    }
+                }
+                catch(exc){
+                    console.log("Invalid JSON: " + exc);
+                }
+            },
+            function(error){
+                console.log("Error JSON: " + JSON.stringify(error));
+                var e = JSON.parse(error);
+                console.log("Error no.: " + e.error + ", Message: " + e.msg + ", Provider: " + e.provider);
+            },
+            /////////////////////////////////////////
+            //
+            // These are the required plugin options!
+            // README has API details
+            //
+            /////////////////////////////////////////
+            {
+                "minTime":0,
+                "minDistance":0,
+                "noWarn":false,
+                "providers":"all",
+                "useCache":true,
+                "satelliteData":true,
+                "buffer":true,
+                "bufferSize":10,
+                "signalStrength":false
+            });
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		var networkState = navigator.connection.type;
 		app.debug("-------------- NETWORK");
 		app.debug(networkState);

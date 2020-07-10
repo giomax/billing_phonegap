@@ -110,5 +110,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-advanced-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/esri/cordova-plugin-advanced-geolocation.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

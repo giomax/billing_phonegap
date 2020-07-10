@@ -377,6 +377,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
         "navigator.notification",
         "navigator"
       ]
+    },
+    {
+      "id": "cordova-plugin-advanced-geolocation.AdvancedGeolocation",
+      "file": "plugins/cordova-plugin-advanced-geolocation/www/AdvancedGeolocation.js",
+      "pluginId": "cordova-plugin-advanced-geolocation",
+      "clobbers": [
+        "AdvancedGeolocation"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -392,6 +400,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-vibration": "2.1.6",
-    "cordova-plugin-whitelist": "1.3.4"
+    "cordova-plugin-whitelist": "1.3.4",
+    "cordova-plugin-advanced-geolocation": "1.6.2"
   };
 });
