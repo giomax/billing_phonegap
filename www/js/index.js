@@ -89,7 +89,7 @@ var app = {
 	},
     receivedEvent: function(id) {
 		
-		
+		/*
 		AdvancedGeolocation.start(function(data){
 
                 try{
@@ -168,12 +168,29 @@ var app = {
                 "signalStrength":false
             });
 
+		*/
+		
+		navigator.geolocation.setSource('external', gpsReady); 
+
 		
 		
-		
-		
-		
-		
+		function gpsReady() {
+    // Official API
+    navigator.geolocation.watchPosition(onLocate);
+}
+
+function onLocate(pos) {
+    // Official result
+    console.log(pos.coords.latitude);  // 45.079936
+    console.log(pos.coords.longitude); // -93.55493
+    console.log(pos.coords.accuracy);  // 8.4
+    
+    // Unofficial result (this plugin)
+    console.log(pos.source.type);        // "external"
+    console.log(pos.source.typeIsGuess); // false (true on iOS)
+    console.log(pos.source.identifier);  // "GNSS:65212 (00:17:E9:24:29:55)"
+}
+
 		
 		
 		

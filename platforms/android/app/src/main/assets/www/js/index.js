@@ -89,7 +89,7 @@ var app = {
 	},
     receivedEvent: function(id) {
 		
-		
+		/*
 		AdvancedGeolocation.start(function(data){
 
                 try{
@@ -168,7 +168,7 @@ var app = {
                 "signalStrength":false
             });
 
-		
+		*/
 		
 		
 		

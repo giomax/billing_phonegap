@@ -45,10 +45,19 @@
     },
     "cordova-plugin-advanced-geolocation": {
       "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-bluetooth-geolocation": {
+      "PACKAGE_NAME": "com.phonegap.billing"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-bluetooth-serial": {
+      "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-listpicker": {
       "PACKAGE_NAME": "com.phonegap.billing"
     }
   }

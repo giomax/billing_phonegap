@@ -385,6 +385,46 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "AdvancedGeolocation"
       ]
+    },
+    {
+      "id": "cordova-plugin-bluetooth-serial.bluetoothSerial",
+      "file": "plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js",
+      "pluginId": "cordova-plugin-bluetooth-serial",
+      "clobbers": [
+        "window.bluetoothSerial"
+      ]
+    },
+    {
+      "id": "cordova-plugin-listpicker.ListPicker",
+      "file": "plugins/cordova-plugin-listpicker/www/ListPicker.js",
+      "pluginId": "cordova-plugin-listpicker",
+      "clobbers": [
+        "window.plugins.listpicker"
+      ]
+    },
+    {
+      "id": "cordova-plugin-bluetooth-geolocation.gps",
+      "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/lib/gps.js",
+      "pluginId": "cordova-plugin-bluetooth-geolocation",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-bluetooth-geolocation.Coordinates",
+      "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/lib/Coordinates.js",
+      "pluginId": "cordova-plugin-bluetooth-geolocation",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-bluetooth-geolocation.Position",
+      "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/lib/Position.js",
+      "pluginId": "cordova-plugin-bluetooth-geolocation",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-bluetooth-geolocation.bluetooth-geolocation",
+      "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/bluetooth-geolocation.js",
+      "pluginId": "cordova-plugin-bluetooth-geolocation",
+      "runs": true
     }
   ];
   module.exports.metadata = {
@@ -401,6 +441,9 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.3.4",
-    "cordova-plugin-advanced-geolocation": "1.6.2"
+    "cordova-plugin-advanced-geolocation": "1.6.2",
+    "cordova-plugin-bluetooth-serial": "0.4.7",
+    "cordova-plugin-listpicker": "2.2.2",
+    "cordova-plugin-bluetooth-geolocation": "0.0.1"
   };
 });

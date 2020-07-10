@@ -118,5 +118,29 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-bluetooth-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/heigeo/cordova-plugin-bluetooth-geolocation"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-bluetooth-serial": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-bluetooth-serial"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-listpicker": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-listpicker"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }

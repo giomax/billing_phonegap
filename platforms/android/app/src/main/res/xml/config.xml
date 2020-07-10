@@ -46,6 +46,12 @@
     <feature name="AdvancedGeolocation">
         <param name="android-package" value="com.esri.cordova.geolocation.AdvancedGeolocation" />
     </feature>
+    <feature name="ListPicker">
+        <param name="android-package" value="am.armsoft.plugins.ListPicker" />
+    </feature>
+    <feature name="BluetoothSerial">
+        <param name="android-package" value="com.megster.cordova.BluetoothSerial" />
+    </feature>
     <name>ბილინგი 2.0</name>
     <description>
         ბილინგი 2.0

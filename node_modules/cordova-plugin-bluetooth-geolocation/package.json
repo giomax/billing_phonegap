@@ -1,0 +1,57 @@
+{
+  "_from": "git+https://github.com/heigeo/cordova-plugin-bluetooth-geolocation.git",
+  "_id": "cordova-plugin-bluetooth-geolocation@0.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-bluetooth-geolocation",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/heigeo/cordova-plugin-bluetooth-geolocation",
+    "rawSpec": "https://github.com/heigeo/cordova-plugin-bluetooth-geolocation",
+    "saveSpec": "git+https://github.com/heigeo/cordova-plugin-bluetooth-geolocation.git",
+    "fetchSpec": "https://github.com/heigeo/cordova-plugin-bluetooth-geolocation.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/heigeo/cordova-plugin-bluetooth-geolocation.git#15c1f142cbef9dc9f6e3f6dccc3af61ba6c25467",
+  "_spec": "https://github.com/heigeo/cordova-plugin-bluetooth-geolocation",
+  "_where": "C:\\Users\\giorgi.kvavilashvili\\Desktop\\billing_phonegap",
+  "author": {
+    "name": "Houston Engineering, Inc."
+  },
+  "bugs": {
+    "url": "https://github.com/heigeo/cordova-plugin-bluetooth-geolocation/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-bluetooth-geolocation",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Connect to external bluetooth GPS on Android without requiring Mock Locations.",
+  "homepage": "https://github.com/heigeo/cordova-plugin-bluetooth-geolocation#readme",
+  "keywords": [
+    "cordova",
+    "device",
+    "geolocation",
+    "gps",
+    "bluetooth",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-bluetooth-geolocation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heigeo/cordova-plugin-bluetooth-geolocation.git"
+  },
+  "version": "0.0.1"
+}

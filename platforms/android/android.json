@@ -86,6 +86,16 @@
             {
               "xml": "<feature name=\"AdvancedGeolocation\"><param name=\"android-package\" value=\"com.esri.cordova.geolocation.AdvancedGeolocation\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"ListPicker\"><param name=\"android-package\" value=\"am.armsoft.plugins.ListPicker\" /></feature>",
+              "count": 1
+            }
+          ],
+          "/widget": [
+            {
+              "xml": "<feature name=\"BluetoothSerial\"><param name=\"android-package\" value=\"com.megster.cordova.BluetoothSerial\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -144,6 +154,18 @@
             {
               "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
               "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+              "count": 1
             }
           ]
         }
@@ -191,6 +213,15 @@
       "PACKAGE_NAME": "com.phonegap.billing"
     },
     "cordova-plugin-advanced-geolocation": {
+      "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-bluetooth-serial": {
+      "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-listpicker": {
+      "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-bluetooth-geolocation": {
       "PACKAGE_NAME": "com.phonegap.billing"
     }
   },
@@ -581,6 +612,46 @@
       "clobbers": [
         "AdvancedGeolocation"
       ]
+    },
+    {
+      "id": "cordova-plugin-bluetooth-serial.bluetoothSerial",
+      "file": "plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js",
+      "pluginId": "cordova-plugin-bluetooth-serial",
+      "clobbers": [
+        "window.bluetoothSerial"
+      ]
+    },
+    {
+      "id": "cordova-plugin-listpicker.ListPicker",
+      "file": "plugins/cordova-plugin-listpicker/www/ListPicker.js",
+      "pluginId": "cordova-plugin-listpicker",
+      "clobbers": [
+        "window.plugins.listpicker"
+      ]
+    },
+    {
+      "id": "cordova-plugin-bluetooth-geolocation.gps",
+      "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/lib/gps.js",
+      "pluginId": "cordova-plugin-bluetooth-geolocation",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-bluetooth-geolocation.Coordinates",
+      "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/lib/Coordinates.js",
+      "pluginId": "cordova-plugin-bluetooth-geolocation",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-bluetooth-geolocation.Position",
+      "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/lib/Position.js",
+      "pluginId": "cordova-plugin-bluetooth-geolocation",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-bluetooth-geolocation.bluetooth-geolocation",
+      "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/bluetooth-geolocation.js",
+      "pluginId": "cordova-plugin-bluetooth-geolocation",
+      "runs": true
     }
   ],
   "plugin_metadata": {
@@ -597,6 +668,9 @@
     "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.3.4",
-    "cordova-plugin-advanced-geolocation": "1.6.2"
+    "cordova-plugin-advanced-geolocation": "1.6.2",
+    "cordova-plugin-bluetooth-serial": "0.4.7",
+    "cordova-plugin-listpicker": "2.2.2",
+    "cordova-plugin-bluetooth-geolocation": "0.0.1"
   }
 }
