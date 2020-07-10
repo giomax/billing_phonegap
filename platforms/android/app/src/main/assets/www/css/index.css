@@ -88,7 +88,9 @@ label{
 	float:right;
 }
 
-.landButtons a{
+.landButtons button{
+	width:375px;
+	font-size:13px;
 	margin-top:15px;
 	display:block;
 }
@@ -134,4 +136,9 @@ label{
 .modal-title, .btn-secondary{
 	font-size:12px;
 	font-family:bpg_arial;
+}
+
+.bg-light a.active{
+    background: white !important;
+    color: #17a2b8 !important;
 }

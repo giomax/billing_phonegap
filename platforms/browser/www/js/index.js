@@ -26,13 +26,20 @@ var app = {
 			if(!storage.getItem('user_name')){
 				app.user();
 			}
-				$.ajax({
+			$.ajax({
+					  method: "GET",
+					  url: 'header.html'					
+					}).done(function(data){
+						$('.app').html(data);
+						$('.userName').html(storage.getItem('user_name'));
+						$('.'+page).addClass('active');
+			});
+			
+			$.ajax({
 					  method: "GET",
 					  url: page+'.html'					
 					}).done(function(data){
-						$('.app').html(data);
-						alert(storage.getItem('user_name'));
-						$('.userName').html(storage.getItem('user_name'));
+						$('header').after(data);
 						app.datatable();
 					});
 			
@@ -42,12 +49,13 @@ var app = {
 		$.ajax({
 					  method: "POST",
 					  url: base_url+'auth/user',
-						headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },					  
+						headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },				  
 					}).done(function(data){
 						storage.setItem('user_id',data.id);
 						storage.setItem('user_name',data.name);
 						app.debug("----------USER");
 						app.debug(data);
+						app.debug(storage.getItem('user_name'));
 						app.debug("----------USER");
 					});
 	},
@@ -68,7 +76,7 @@ var app = {
 			
 			 ajax: {
 				 headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },					 
-			  url: base_url+"auth/inspection/1",
+			  url: base_url+"auth/inspection/"+$('[name="service"]').val(),
 			  type: "POST",
 			 },
 			 columns: columns,
@@ -84,7 +92,6 @@ var app = {
 		app.debug("-------------- NETWORK");
 		app.debug(networkState);
 		app.debug("-------------- NETWORK");
-		
 		
 		app.debug("-------------- TOKEN");
 		app.debug(storage);
@@ -120,11 +127,7 @@ var app = {
 					  data:{
 						  'email':$("[name='email']").val(),
 						  'password':$("[name='password']").val()
-					  },error:function(row,e,k,data){
-						  console.log(row);
-						  console.log(e);
-						  console.log(k);
-						  console.log(data);
+					  },error:function(row,e,k,data){	
 						  if(row.status == 401){
 							  swal(row.responseJSON.message);
 						  }else{
@@ -150,15 +153,13 @@ var app = {
     },
 	functions:function(){
 		$(document).on('click', '.logout', function(e){			
-			storage.removeItem('access_token');
+			storage.clear();
 			app.page('login');
 		});
 		
 		$(document).on('click','.pic_open',function(e){
 			e.preventDefault();
-			var id = $(this).data('id');
-			console.log(storage.getItem('token_type')+' '+storage.getItem('access_token'));
-			
+			var id = $(this).data('id');			
 					$.ajax({
 					  headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },		
 					  method: "POST",
@@ -184,5 +185,31 @@ var app = {
 			$('#delete button.btn-primary').data('id', id);
 			$('#delete').modal('show');
 		});
+		
+		$(document).on('click','header .nav-link',function(e){
+			e.preventDefault();
+			app.page($(this).data('menu'));
+		});
+		
+		$(document).on('click','.choose_inspection',function(e){
+			e.preventDefault();
+			$btn = $(this);
+			var btn_text = $btn.text();
+			$btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> იტვირთება...').prop('disabled',true);
+			$.ajax({
+					  method: "POST",
+					  url: base_url+'auth/get_regions',
+						headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },					  
+					}).done(function(data){
+							$('body').append(data);
+							$('#regions').modal('show');
+							$btn.prop('disabled',false).text(btn_text);
+					});
+		});
+		
+		$(document).on('click','.remove_modal',function(){
+			$('.modal:visible').modal('hide').remove();
+		});
+		
 	}
 };
