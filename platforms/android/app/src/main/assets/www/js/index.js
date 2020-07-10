@@ -100,21 +100,7 @@ var app = {
 		if(storage.getItem('access_token')){
 			return app.page('home');
 		}
-		var onSuccess = function(position) {
-			app.debug('Latitude: '          + position.coords.latitude          + '\n' +
-				  'Longitude: '         + position.coords.longitude         + '\n' +
-				  'Altitude: '          + position.coords.altitude          + '\n' +
-				  'Accuracy: '          + position.coords.accuracy          + '\n' +
-				  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-				  'Heading: '           + position.coords.heading           + '\n' +
-				  'Speed: '             + position.coords.speed             + '\n' +
-				  'Timestamp: '         + position.timestamp                + '\n');	
-		};
-		function onError(error) {
-			app.debug('code: '    + error.code    + '\n' +
-				  'message: ' + error.message + '\n');
-		}
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		
 		//first STEP LOGIN PAGE
 		app.page('login');
 		$(document).on('submit', '#login', function(e){
@@ -194,6 +180,7 @@ var app = {
 		$(document).on('click','.choose_inspection',function(e){
 			e.preventDefault();
 			$btn = $(this);
+			var type = $(this).data('type');
 			var btn_text = $btn.text();
 			$btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> იტვირთება...').prop('disabled',true);
 			$.ajax({
@@ -204,6 +191,7 @@ var app = {
 							$('body').append(data);
 							$('#regions').modal('show');
 							$btn.prop('disabled',false).text(btn_text);
+							$('.inspection_continue').data('type',type);
 					});
 		});
 		
@@ -211,5 +199,76 @@ var app = {
 			$('.modal:visible').modal('hide').remove();
 		});
 		
+		$(document).on('change', '.change_region',function(){
+			var val = $(this).val();
+			$btn = $('.inspection_continue');
+			var btn_text = $btn.text();
+			$btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> იტვირთება...').prop('disabled',true);
+			$.ajax({
+					  method: "POST",
+					  url: base_url+'auth/get_service_centers',
+						headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },			
+						data:{
+							'region_id':val
+						}
+					}).done(function(data){
+							$('[name="service_center_id"]').html(data);
+							$btn.prop('disabled',false).text(btn_text);
+					});
+			
+		});
+		
+		$(document).on('change','.red_border',function(){
+			$(this).removeClass('red_border');
+		});
+		
+		$(document).on('click','.inspection_continue',function(){
+			var region_id = $('[name="region_id"]').val();
+			var service_center_id = $('[name="service_center_id"]').val();
+			var service = $('[name="service"]').val();
+			var type = $(this).data('type');
+			if(!region_id){
+				$('[name="region_id"]').addClass('red_border');
+				return false;
+			}
+			if(!service_center_id){
+				$('[name="service_center_id"]').addClass('red_border');
+				return false;
+			}
+			
+			$.ajax({
+					  method: "POST",
+					  url: base_url+'auth/load_map',
+						headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },			
+						data:{
+							'region_id':region_id,
+							'service_center_id':service_center_id,
+							'service':service,
+							'type':type
+						}
+					}).done(function(data){
+							$('.modal:visible').modal('hide').remove();
+							$('body').append("<div class='gis_map'></div>");
+							$('.gis_map').html(data);
+							
+							var onSuccess = function(position) {
+								app.debug('Latitude: '          + position.coords.latitude          + '\n' +
+									  'Longitude: '         + position.coords.longitude         + '\n' +
+									  'Altitude: '          + position.coords.altitude          + '\n' +
+									  'Accuracy: '          + position.coords.accuracy          + '\n' +
+									  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+									  'Heading: '           + position.coords.heading           + '\n' +
+									  'Speed: '             + position.coords.speed             + '\n' +
+									  'Timestamp: '         + position.timestamp                + '\n');	
+							};
+							function onError(error) {
+								app.debug('code: '    + error.code    + '\n' +
+									  'message: ' + error.message + '\n');
+							}
+							navigator.geolocation.getCurrentPosition(onSuccess, onError);
+							
+					});
+			
+		});
 	}
 };

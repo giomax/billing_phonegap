@@ -1,0 +1,570 @@
+ html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+	  
+	
+      #formDiv {
+        width: 100%;
+      }
+	
+	#editArea{
+		position:relative;
+		top:50px;
+	}
+	
+	.esri-popup__button.esri-popup__button--dock,.esri-popup__navigation{
+		display:none;
+	}
+	
+
+      .esri-item-list__scroller {
+        overflow-y: visible;
+      }
+
+      .editArea-container {
+        background: #fff;
+        line-height: 1.5em;
+        overflow: auto;       
+      }
+
+      .list-heading {
+        font-weight: normal;
+		font-size:18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #323232;
+		text-align:center;
+      }
+
+      .or-wrap {
+        background-color: #e0e0e0;
+        height: 1px;
+        margin: 2em 0;
+        overflow: visible;
+      }
+
+      .or-text {
+        background: #fff;
+        line-height: 0;
+        padding: 0 1em;
+        position: relative;
+        bottom: 0.75em;
+      }
+
+      /* override default styles */
+      .esri-feature-form {
+        background: #fff;
+      }
+
+      .esri-feature-templates {
+        width: 256px;
+      }
+
+      .esri-feature-templates__section-header {
+        display: none;
+      }
+
+      .esri-feature-templates__section {
+        box-shadow: none;
+      }
+
+      .esri-feature-templates__scroller {
+        max-height: 200px;
+      }
+	  
+	 .esri-icon-cursor, .esri-icon-map-pin, .esri-icon-polyline, .esri-icon-checkbox-unchecked, .esri-icon-radio-unchecked, .esri-sketch__tool-section:last-child{
+		 display:none;
+	 }
+	 
+	 #zoomDiv, #my_coortinates {
+		 float:left;
+		 position:relative;
+		 top:-1px;
+		 display:inline-block;
+	 }
+	 
+	 #zoomDiv div, #my_coortinates {
+		 float:left;
+		 margin-right:10px;
+		 border:1px solid #D3D3D3;
+		 width:24px;
+		 height:24px;
+		 box-shadow:0 0 1px rgba(0, 0, 0, 0.3);
+	 }
+	 
+	 #my_coortinates  span{
+		 position:relative;
+		 top:4px;
+		 left:1px;
+	 }
+	 
+	 
+	 #zoomDiv div span::before{
+		 font-size:11px;
+		 position:relative;
+		 top:-2px;
+	 }
+.esri-button, .esri-feature-form__form, .list-heading{
+	font-family:bpg_arial;
+}
+
+.esri-expand{
+	min-height:auto;
+	min-width:auto;
+}
+.editArea-container{
+	width:auto!important;
+}
+
+#addTemplatesDiv{
+	right:22px;
+	position:absolute;
+	top:70px;
+	z-index:10;
+	width:400px;
+	padding:10px;
+}
+.pointer{
+	cursor:pointer;
+}
+#addTemplatesDiv label{
+	display:block;
+	cursor:pointer;
+	font-size:13px;
+	font-family:bpg_arial;
+	
+	
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+
+}
+
+
+  #topbar {
+      background: #fff;
+      position: absolute;
+      top: 10px;
+      right: 22px;
+      padding: 10px;
+	  z-index:100;
+    }
+
+    .action-button {
+      font-size: 16px;
+      background-color: transparent;
+      border: 1px solid #D3D3D3;
+      color: #6e6e6e;
+      height: 32px;
+      width: 32px;
+      text-align: center;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    }
+
+    .action-button:hover,
+    .action-button:focus {
+      background: #0079c1;
+      color: #e4e4e4;
+    }
+
+    .active {
+      background: #0079c1;
+      color: #e4e4e4;
+    }
+	
+	label.active{
+		background:transparent;
+		color:black;
+	}
+	
+	.LegendHeading{
+		font-family:bpg_arial_caps;
+		font-size:11px;
+		font-weight:bold;
+	}
+	
+	.forColor{
+		float:left;
+		width:15px;
+		height:15px;
+		color:black;
+		margin-right:10px;
+		text-align:center;
+		width:23px;
+		height:23px;
+	}
+	
+	.CloseGis{
+		font-size:11px;
+		position:relative;
+		top:-2px;
+		width:80px;
+		height:24px;
+		font-family:bpg_arial;
+	}
+	
+	
+	.coordinates{
+		line-height:32px;
+		font-family:bpg_arial_caps;
+		position:absolute;
+		z-index:49;
+		padding-left:15px;
+		width:100%;
+		font-size:11px;
+		bottom:0;
+		right:0;
+		background:white;
+	}
+	
+	.coordinates .xmin, .coordinates .xmax, .coordinates .ymin, .coordinates .ymax{
+		margin-right:10px;
+	}
+	
+	.current_km{
+		display:none;
+	}
+	
+	.layer_zoom{
+		float:left;
+		cursor:pointer;
+		margin-right:10px;
+		margin-top:4px;
+	}
+	
+	.loading{
+		background:url('../images/loading1.gif')no-repeat;
+		width:16px;
+		height:16px;
+	}
+	
+	#search, #search1, #search_results{
+		position:absolute;
+		z-index:20;
+		left:10px;
+		background:white;
+		padding:10px;
+		top:10px;
+	}
+	
+	#search input, #search1 input{
+		display:block;
+		padding: 0 10px;
+		margin-bottom:10px;
+		font-size:11px;
+		width:100%;
+	}
+	
+	#search button, #search1 button{
+		width:100%;
+		font-family:bpg_arial_caps;
+		font-size:11px;
+	}
+	
+	#search_results{
+		top:235px;
+		display:none;
+		width:370px;
+		overflow-y:auto;
+		max-height:300px;
+	}
+	
+	
+	.warning{
+		top:0;
+		left:0;
+		height:100vh;
+		width:100%;
+		position:fixed;
+		z-index:50;
+		font-size:15px;
+		font-weight:bold;
+		font-family:bpg_arial_caps;
+		text-align:center;
+		padding-top:10%;
+		background:white;
+		display:none;
+	}
+	
+	label.or{
+		display:block;
+		text-align:center;
+	}
+	
+	.CloseTable{
+		float:right;
+	}
+	
+	.esri-feature__main-container a{
+		color:white;
+		background:#007bff;
+		padding:10px;
+		line-height:35px;
+		font-size:13px;
+	}
+	.esri-feature__main-container a:hover{
+		color:white;
+	}
+	
+	.esri-feature__main-container div{
+		margin-top:10px;
+	}
+	
+	.submitForm, .help_form{
+		background:white;
+		position:absolute;
+		display:none;
+		top:0;
+		left:0;
+		overflow-y:auto;
+		width:100%;
+		height:100vh;
+		z-index:1000;
+	}
+	
+	.submitForm #submitForm, .help_form form{
+		width:550px;
+		display:block;
+		margin:auto;
+		margin-top:20px;
+	}
+.clearBoth{
+	clear:both;
+	display:block;
+}
+.floatLeft{
+	float:left!important;
+}
+.floatRight{
+	float:right !important;
+}
+.halfWidth{
+	width:45%;
+}
+
+.esri-feature__main-container span{
+	font-family:bpg_arial_caps;
+}
+
+.esri-feature__main-container font{
+	font-family:bpg_arial;
+}
+
+.submitForm textarea{
+	height:175px;
+}
+
+#search1,#search_results{
+	width:252px;
+}
+
+.add_point_button{
+	margin-bottom:10px;
+}
+
+.for_x_y_clone{
+	position:relative;
+	width:100%;
+	overflow:hidden;
+}
+
+.remove_x_y_coordinate{
+	position:relative;
+	height:23px;
+	float:right;
+	width:23px!important;
+	font-size:11px;
+	top:15px;
+}
+
+#search{
+	top:0;
+	left:0;
+	max-height:calc(100vh - 24px);
+	overflow-y:auto;
+}
+
+.number{
+	float:left;
+	margin-top:16px;
+	font-size:11px;
+}
+
+.x_y{
+	float:left;
+	margin-left:20px;
+	width:200px;
+}
+
+#search1 label{
+	font-size:11px;
+}
+
+.add_point_button, #search_button{
+	width:260px!important;
+	display:block;
+}
+.submitForm{
+	overflow:auto;
+}
+#submitForm label, #helpForm label{
+	font-size:13px;
+	display:block;
+	width:100%;
+	font-weight:bold;
+	font-family:bpg_arial_caps;
+}
+
+[name='old_gis_search'],[name='x_search'], [name='y_search']{
+	width:100px;
+	height:20px;
+	margin-top:7px;
+	padding-top:8px;
+}
+
+[name='old_gis_search']{
+	width:150px;
+	
+}
+
+#placePoint,#oldgis{
+	height:20px;
+	margin-top:7px;
+	font-size:11px;
+	margin-bottom:5px;
+	padding-bottom:0px;
+	padding-top:0px;
+}
+
+#submitForm p{
+	font-size:12px;
+}
+
+.help{
+	position:absolute;
+	
+	z-index:100;
+	bottom:40px;
+	left:10px;
+	cursor:pointer;
+	background:rgba(255, 249, 71, 0.4);
+	border-radius:20px;
+	padding:5px;
+}
+
+.help img{
+	width:30px;
+}
+
+.helpfiles{
+	list-style:none;
+	margin:0px;
+	margin-top:10px;
+	padding:0px;
+}
+
+.helpfiles li{
+	float:left;
+	margin-right:10px;
+	position:relative;
+}
+
+.helpfiles img{
+	width:100px;
+}
+
+.helpfiles .fileDelete{
+	cursor:pointer;
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+
+.zoomButton{
+	background:transparent;
+	border:1px solid #D3D3D3;
+	box-shadow:0 0 1px rgba(0, 0, 0, 0.3);
+	height:32px;
+	position:relative;
+	top:1px;
+	
+}
+
+.esri-zoom{
+	display:none;
+}
+
+#polygonButton, #savePolygon, #deletePolygon, #fullRegister{
+	position:fixed;
+	top:10px;
+	left:10px;
+	z-index:20;
+	background:white;
+	width:auto;
+	font-size:13px;
+	font-family:bpg_arial!important;	
+	width:217px;
+}
+
+#deletePolygon{
+	top:45px;
+	display:none;
+}
+
+#savePolygon{
+	display:none;
+}
+
+#polygonButton::before, #savePolygon::before, #deletePolygon::before, #fullRegister::before{
+	content:'';
+}
+
+#polygonButton.active, #polygonButton:hover, #savePolygon.active, #savePolygon:hover, #deletePolygon.active, #deletePolygon:hover, #fullRegister:hover, #fullRegister.active{
+	background:#007bff;
+	color:#fff;
+}
+
+.added .forClone{
+	border-top: 2px solid #ced4da;
+    margin-top: 20px;
+}
+
+#fullRegister{
+	height:45px!important;
+	width:280px!important;
+	left:0px!important;
+}
+
+.landStatementTop{
+	top:60px!important;
+}
+
+.forClone{
+	position:relative;
+}
+
+.forClone .remove_owner{
+	position:absolute;
+	top:10px;
+	right:0;
+}
+
+	.forState{
+		position:relative;
+		top:50px;
+	}
+	
+	.forState #polygonButton, .forState #savePolygon, .forState #deletePolygon{
+		position:absolute;
+		left:0;
+		width:280px;
+	}
