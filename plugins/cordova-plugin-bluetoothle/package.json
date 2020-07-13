@@ -1,27 +1,24 @@
 {
-  "_from": "cordova-plugin-bluetoothle@4.5.14",
+  "_from": "git+https://github.com/randdusing/BluetoothLE.git",
   "_id": "cordova-plugin-bluetoothle@4.5.14",
   "_inBundle": false,
-  "_integrity": "sha512-fKzmgBXn1yQEavxqy2mnbR4n/L4tXL/T8onFgYCsOjSB1fY2B87BgVjIB7xxXohqDJUvJFU9z4z0SwejXfqhHA==",
+  "_integrity": "",
   "_location": "/cordova-plugin-bluetoothle",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "cordova-plugin-bluetoothle@4.5.14",
-    "name": "cordova-plugin-bluetoothle",
-    "escapedName": "cordova-plugin-bluetoothle",
-    "rawSpec": "4.5.14",
-    "saveSpec": null,
-    "fetchSpec": "4.5.14"
+    "type": "git",
+    "raw": "https://github.com/randdusing/BluetoothLE",
+    "rawSpec": "https://github.com/randdusing/BluetoothLE",
+    "saveSpec": "git+https://github.com/randdusing/BluetoothLE.git",
+    "fetchSpec": "https://github.com/randdusing/BluetoothLE.git",
+    "gitCommittish": null
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-bluetoothle/-/cordova-plugin-bluetoothle-4.5.14.tgz",
-  "_shasum": "547a08042cc9cf360fcf4f400a714e457f9a0296",
-  "_spec": "cordova-plugin-bluetoothle@4.5.14",
+  "_resolved": "git+https://github.com/randdusing/BluetoothLE.git#2a899e6047cf11695c5cd79ace3aa82d4bdce097",
+  "_spec": "https://github.com/randdusing/BluetoothLE",
   "_where": "C:\\Users\\giorgi.kvavilashvili\\Desktop\\billing_phonegap",
   "author": {
     "name": "Rand Dusing"

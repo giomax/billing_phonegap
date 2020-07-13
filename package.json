@@ -40,7 +40,7 @@
     "cordova-plugin-advanced-geolocation": "git+https://github.com/esri/cordova-plugin-advanced-geolocation.git",
     "cordova-plugin-bluetooth-geolocation": "git+https://github.com/heigeo/cordova-plugin-bluetooth-geolocation.git",
     "cordova-plugin-bluetooth-serial": "^0.4.7",
-    "cordova-plugin-bluetoothle": "^4.5.14",
+    "cordova-plugin-bluetoothle": "git+https://github.com/randdusing/BluetoothLE.git",
     "cordova-plugin-listpicker": "^2.2.2",
     "cordova-plugin-splashscreen": "^5.0.4",
     "cordova-plugin-whitelist": "^1.3.4"

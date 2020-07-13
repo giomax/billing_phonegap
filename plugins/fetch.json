@@ -146,7 +146,7 @@
   "cordova-plugin-bluetoothle": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-bluetoothle@4.5.14"
+      "id": "https://github.com/randdusing/BluetoothLE"
     },
     "is_top_level": true,
     "variables": {}
