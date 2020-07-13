@@ -1,4 +1,5 @@
-var base_url = "http://82.211.132.146:1881/api/";
+//var base_url = "http://82.211.132.146:1881/api/";
+var base_url = "http://192.168.1.103:1881//api/";
 var storage = window.localStorage;
 var app = {
 	debug:function(text){
