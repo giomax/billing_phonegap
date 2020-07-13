@@ -217,15 +217,9 @@ var app = {
 						}
 					});
 		});
+		
+		
     },
-	gpsReady:function(data){
-		app.debug("GPS READY");
-		navigator.geolocation.getCurrentPosition(onLocate, onError, {enableHighAccuracy:true});
-	},
-	gpsfailed:function(data){
-		app.debug(data);
-		swal("ვერ მოხერხდა GPS მოწყობილობასთან დაკავშირება გთხოვთ ჩართოთ ბლუთუსი და დაუკავშირდეთ GPS");
-	},
 	functions:function(){
 		$(document).on('click', '.logout', function(e){			
 			storage.clear();
@@ -341,12 +335,6 @@ var app = {
 							$('.gis_map').html(data);
 					});
 			
-		});
-		
-			
-	$(document).on('click','.my_coortinates',function(){
-				console.log("DAECHIRA");
-				navigator.geolocation.setSource('external', app.gpsReady,app.gpsfailed); 									
 		});
 	}
 };
