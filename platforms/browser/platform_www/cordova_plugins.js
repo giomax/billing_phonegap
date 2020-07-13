@@ -450,6 +450,14 @@ module.exports = [
         "clobbers": [
             "window.bluetoothle"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-bluetooth-status/BluetoothStatus.js",
+        "id": "cordova-plugin-bluetooth-status.BluetoothStatus",
+        "pluginId": "cordova-plugin-bluetooth-status",
+        "clobbers": [
+            "cordova.plugins.BluetoothStatus"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -473,7 +481,8 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.3.4",
-    "cordova-plugin-bluetoothle": "4.5.14"
+    "cordova-plugin-bluetoothle": "4.5.14",
+    "cordova-plugin-bluetooth-status": "1.0.4"
 }
 // BOTTOM OF METADATA
 });

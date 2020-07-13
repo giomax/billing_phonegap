@@ -52,6 +52,9 @@
     <feature name="BluetoothLePlugin">
         <param name="android-package" value="com.randdusing.bluetoothle.BluetoothLePlugin" />
     </feature>
+    <feature name="BluetoothStatus">
+        <param name="android-package" value="com.twofivefivekb.android.bluetoothstatus.BluetoothStatus" />
+    </feature>
     <feature name="BluetoothSerial">
         <param name="android-package" value="com.megster.cordova.BluetoothSerial" />
     </feature>

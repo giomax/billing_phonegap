@@ -51,13 +51,16 @@
     },
     "cordova-plugin-bluetoothle": {
       "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-bluetooth-status": {
+      "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-bluetooth-serial": {
+      "PACKAGE_NAME": "com.phonegap.billing"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.phonegap.billing"
-    },
-    "cordova-plugin-bluetooth-serial": {
       "PACKAGE_NAME": "com.phonegap.billing"
     },
     "cordova-plugin-listpicker": {

@@ -130,9 +130,9 @@
   "cordova-plugin-bluetooth-serial": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-bluetooth-serial"
+      "id": "cordova-plugin-bluetooth-serial@^0.4.7"
     },
-    "is_top_level": false,
+    "is_top_level": true,
     "variables": {}
   },
   "cordova-plugin-listpicker": {
@@ -147,6 +147,14 @@
     "source": {
       "type": "registry",
       "id": "https://github.com/randdusing/BluetoothLE"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-bluetooth-status": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-bluetooth-status"
     },
     "is_top_level": true,
     "variables": {}

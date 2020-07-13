@@ -1,0 +1,63 @@
+{
+  "_from": "cordova-plugin-bluetooth-status",
+  "_id": "cordova-plugin-bluetooth-status@1.0.4",
+  "_inBundle": false,
+  "_integrity": "sha1-FMtR5CP8Of8AtAkIlU+8oAXDUU0=",
+  "_location": "/cordova-plugin-bluetooth-status",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-bluetooth-status",
+    "name": "cordova-plugin-bluetooth-status",
+    "escapedName": "cordova-plugin-bluetooth-status",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-bluetooth-status/-/cordova-plugin-bluetooth-status-1.0.4.tgz",
+  "_shasum": "14cb51e423fc39ff00b40908954fbca005c3514d",
+  "_spec": "cordova-plugin-bluetooth-status",
+  "_where": "C:\\Users\\giorgi.kvavilashvili\\Desktop\\billing_phonegap",
+  "author": {
+    "name": "Guillaume Monnet"
+  },
+  "bugs": {
+    "url": "https://github.com/255kb/cordova-plugin-bluetooth-status/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-bluetooth-status",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Bluetooth status plugin",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "homepage": "https://github.com/255kb/cordova-plugin-bluetooth-status#readme",
+  "keywords": [
+    "cordova",
+    "bluetooth",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-bluetooth-status",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/255kb/cordova-plugin-bluetooth-status.git"
+  },
+  "version": "1.0.4"
+}
