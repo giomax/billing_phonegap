@@ -31,7 +31,8 @@
       "cordova-plugin-bluetooth-geolocation": {},
       "cordova-plugin-bluetoothle": {},
       "cordova-plugin-bluetooth-status": {},
-      "cordova-plugin-bluetooth-serial": {}
+      "cordova-plugin-bluetooth-serial": {},
+      "cordova-plugin-ble-central": {}
     },
     "platforms": [
       "android"
@@ -40,6 +41,7 @@
   "dependencies": {
     "cordova-android": "^8.1.0",
     "cordova-plugin-advanced-geolocation": "git+https://github.com/esri/cordova-plugin-advanced-geolocation.git",
+    "cordova-plugin-ble-central": "1.2.5",
     "cordova-plugin-bluetooth-geolocation": "git+https://github.com/heigeo/cordova-plugin-bluetooth-geolocation.git",
     "cordova-plugin-bluetooth-serial": "^0.4.7",
     "cordova-plugin-bluetooth-status": "^1.0.4",

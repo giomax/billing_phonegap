@@ -1,5 +1,5 @@
 //var base_url = "http://82.211.132.146:1881/api/";
-var base_url = "http://192.168.1.103:1881//api/";
+var base_url = "http://192.168.1.103:1881/api/";
 var storage = window.localStorage;
 var app = {
 	debug:function(text){
@@ -89,140 +89,88 @@ var app = {
 		}
 	},
     receivedEvent: function(id) {
-		bluetoothle.hasPermission(hasPermissionSuccess);
-		bluetoothle.isLocationEnabled(isLocationEnabledSuccess, isLocationEnabledError);
-		  function hasPermissionSuccess(data){
-			  console.log(data);
-			  if(!data.hasPermission){
-				  bluetoothle.requestPermission(requestPermissionSuccess, requestPermissionError);
-			  }
-		  }
-		  
-		  function requestPermissionSuccess(data){
-			  console.log("PERMISSION GRANTED");
-			  console.log(data);
-		  }
-		  function requestPermissionError(data){
-			  console.log("__ERROR PERMISSION");
-			  console.log(data);
-		  }
-		  
-		    
-		function isLocationEnabledSuccess(data){
-			console.log('LOCATION ENABLED');
-			console.log(data);
-		}
-		function isLocationEnabledError(data){
-			console.log('LOCATION DISABLED');
-			console.log(data);
-		}
 		
-		
-		new Promise(function (resolve) {
-			bluetoothle.initialize(resolve, { request: true, statusReceiver: false });
-		}).then(initializeSuccess);	  
-			  function initializeSuccess(result) {
-			console.log("INITIALIZE SUCCESS");
-			if (result.status === "enabled") {
-				console.log("Bluetooth is enabled.");
-			}
-			else {
-				bluetoothle.enable();	
-				console.log("Bluetooth is disabled");
-			}
-			bluetoothle.connect(conSuccess,connectFail,{'address':'00:1B:C1:08:19:58'});
-		}
-		
-		
-		function conSuccess(data){
-			console.log("CONNECT SUCCESS");
-			console.log(data);
-			bluetoothle.retrieveConnected(retrieveConnectedSuccess);
-		}
+		/*
+		AdvancedGeolocation.start(function(data){
 
-		function connectFail(data){
-			console.log("CONNECT FAILED");
-			console.log(data);
-			bluetoothle.reconnect(conSuccess,connectFail,{'address':'00:1B:C1:08:19:58'});
-		}
+                try{
 
-		function retrieveConnectedSuccess(data){
-			console.log('connect list');
-			console.log(data);
-			console.log('connect list');
-			
-			/*
-			if (data.length == 0){
-				
-				bluetoothle.isScanning(function(data){
-					console.log(data);
-					if(data){
-						stopScan();
-					}
-						startScan();
-				});
-			}
-			*/
-			
-		}
+                    var jsonObject = JSON.parse(data);
+
+                    switch(jsonObject.provider){
+                        case "gps":
+                            if(jsonObject.latitude != "0.0"){
+                                console.log("GPS location");
+                                console.log("GPS location detected - lat:" +
+                                    jsonObject.latitude + ", lon: " + jsonObject.longitude +
+                                    ", accuracy: " + jsonObject.accuracy);
+                                
+                            }
+                            break;
+
+                        case "network":
+                            if(jsonObject.latitude != "0.0"){
+                                
+                                console.log("Network ");
+                                console.log("Network location detected - lat:" +
+                                    jsonObject.latitude + ", lon: " + jsonObject.longitude +
+                                    ", accuracy: " + jsonObject.accuracy);
+                               
+                            }
+                            break;
+
+                        case "satellite":
+                            console.log("Satellites  ");
+                            console.log("Satellites detected " + (Object.keys(jsonObject).length - 1));
+                            console.log("Satellite meta-data: " + data);
+                          
+                            break;
+
+                        case "cell_info":
+						console.log("CELL cell_info -------------------");
+                            console.log("cell_info JSON: " + data);
+                            break;
+
+                        case "cell_location":
+							console.log("CELL LOCATION -------------------");
+                            console.log("cell_location JSON: " + data);
+                            break;
+
+                        case "signal_strength":
+                            console.log("SIGNAL STRENGTH: --------------------");
+                            console.log("Signal strength JSON: " + data);
+                            break;
+                    }
+                }
+                catch(exc){
+                    console.log("Invalid JSON: " + exc);
+                }
+            },
+            function(error){
+                console.log("Error JSON: " + JSON.stringify(error));
+                var e = JSON.parse(error);
+                console.log("Error no.: " + e.error + ", Message: " + e.msg + ", Provider: " + e.provider);
+            },
+            /////////////////////////////////////////
+            //
+            // These are the required plugin options!
+            // README has API details
+            //
+            /////////////////////////////////////////
+            {
+                "minTime":0,
+                "minDistance":0,
+                "noWarn":false,
+                "providers":"all",
+                "useCache":true,
+                "satelliteData":true,
+                "buffer":true,
+                "bufferSize":10,
+                "signalStrength":false
+            });
+
+		*/
 		
-		
-		
-function handleError(error) {
- 
-    var msg;
- 
-    if (error.error && error.message) {
- 
-        var errorItems = [];
- 
-        if (error.service) {
- 
-            errorItems.push("service: " + (uuids[error.service] || error.service));
-        }
- 
-        if (error.characteristic) {
- 
-            errorItems.push("characteristic: " + (uuids[error.characteristic] || error.characteristic));
-        }
- 
-        msg = "Error on " + error.error + ": " + error.message + (errorItems.length && (" (" + errorItems.join(", ") + ")"));
-    }
- 
-    else {
- 
-        msg = error;
-    }
- 
-    console.log(msg, "error");
- 
-    if (error.error === "read" && error.service && error.characteristic) {
- 
-        reportValue(error.service, error.characteristic, "Error: " + error.message);
-    }
-}
-
-
-function connectSuccess(result) {
- 
-    console.log("- " + result.status);
- 
-    if (result.status === "connected") {
- 
-        getDeviceServices(result.address);
-    }
-    else if (result.status === "disconnected") {
- 
-        console.log("Disconnected from device: " + result.address, "status");
-    }
-}
-
-function connectFailed(result){
-	console.log("CONNECT FAILED ========");
-    console.log("- " + result.status);
-}
-
-	  
 		
 		var networkState = navigator.connection.type;
 		app.debug("-------------- NETWORK");

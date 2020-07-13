@@ -104,6 +104,10 @@
             {
               "xml": "<feature name=\"BluetoothSerial\"><param name=\"android-package\" value=\"com.megster.cordova.BluetoothSerial\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"BLE\"><param name=\"android-package\" value=\"com.megster.cordova.ble.central.BLECentralPlugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -177,15 +181,15 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
-              "count": 2
+              "count": 3
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
-              "count": 2
+              "count": 3
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-              "count": 2
+              "count": 3
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
@@ -252,6 +256,9 @@
       "PACKAGE_NAME": "com.phonegap.billing"
     },
     "cordova-plugin-bluetooth-status": {
+      "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-ble-central": {
       "PACKAGE_NAME": "com.phonegap.billing"
     }
   },
@@ -698,6 +705,14 @@
       "clobbers": [
         "cordova.plugins.BluetoothStatus"
       ]
+    },
+    {
+      "id": "cordova-plugin-ble-central.ble",
+      "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+      "pluginId": "cordova-plugin-ble-central",
+      "clobbers": [
+        "ble"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -719,6 +734,7 @@
     "cordova-plugin-listpicker": "2.2.2",
     "cordova-plugin-bluetooth-geolocation": "0.0.1",
     "cordova-plugin-bluetoothle": "4.5.14",
-    "cordova-plugin-bluetooth-status": "1.0.4"
+    "cordova-plugin-bluetooth-status": "1.0.4",
+    "cordova-plugin-ble-central": "1.2.5"
   }
 }

@@ -458,6 +458,22 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.BluetoothStatus"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+        "id": "cordova-plugin-ble-central.ble",
+        "pluginId": "cordova-plugin-ble-central",
+        "clobbers": [
+            "ble"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-ble-central/src/browser/BLECentralPlugin.js",
+        "id": "cordova-plugin-ble-central.BLECentralPlugin",
+        "pluginId": "cordova-plugin-ble-central",
+        "merges": [
+            "ble"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -482,7 +498,8 @@ module.exports.metadata =
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.3.4",
     "cordova-plugin-bluetoothle": "4.5.14",
-    "cordova-plugin-bluetooth-status": "1.0.4"
+    "cordova-plugin-bluetooth-status": "1.0.4",
+    "cordova-plugin-ble-central": "1.2.5"
 }
 // BOTTOM OF METADATA
 });

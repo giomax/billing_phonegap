@@ -441,6 +441,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.BluetoothStatus"
       ]
+    },
+    {
+      "id": "cordova-plugin-ble-central.ble",
+      "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+      "pluginId": "cordova-plugin-ble-central",
+      "clobbers": [
+        "ble"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -462,6 +470,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-listpicker": "2.2.2",
     "cordova-plugin-bluetooth-geolocation": "0.0.1",
     "cordova-plugin-bluetoothle": "4.5.14",
-    "cordova-plugin-bluetooth-status": "1.0.4"
+    "cordova-plugin-bluetooth-status": "1.0.4",
+    "cordova-plugin-ble-central": "1.2.5"
   };
 });
