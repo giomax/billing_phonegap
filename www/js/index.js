@@ -171,12 +171,6 @@ var app = {
 		*/
 		
 		
-
-		
-		
-		
-		
-		
 		var networkState = navigator.connection.type;
 		app.debug("-------------- NETWORK");
 		app.debug(networkState);

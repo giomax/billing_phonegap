@@ -568,3 +568,17 @@
 		left:0;
 		width:280px;
 	}
+	
+	
+	
+.my_coortinates, .create_polygon{
+	position:absolute;
+	z-index:100;
+	right:20px;
+	bottom:35px;
+	width:180px;
+}
+.create_polygon{
+	bottom:80px;
+	display:none;
+}

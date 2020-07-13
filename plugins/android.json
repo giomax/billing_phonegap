@@ -48,6 +48,9 @@
     },
     "cordova-plugin-bluetooth-geolocation": {
       "PACKAGE_NAME": "com.phonegap.billing"
+    },
+    "cordova-plugin-bluetoothle": {
+      "PACKAGE_NAME": "com.phonegap.billing"
     }
   },
   "dependent_plugins": {

@@ -49,6 +49,9 @@
     <feature name="ListPicker">
         <param name="android-package" value="am.armsoft.plugins.ListPicker" />
     </feature>
+    <feature name="BluetoothLePlugin">
+        <param name="android-package" value="com.randdusing.bluetoothle.BluetoothLePlugin" />
+    </feature>
     <feature name="BluetoothSerial">
         <param name="android-package" value="com.megster.cordova.BluetoothSerial" />
     </feature>

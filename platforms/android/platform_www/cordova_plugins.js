@@ -425,6 +425,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/cordova-plugin-bluetooth-geolocation/www/android/bluetooth-geolocation.js",
       "pluginId": "cordova-plugin-bluetooth-geolocation",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-bluetoothle.BluetoothLe",
+      "file": "plugins/cordova-plugin-bluetoothle/www/bluetoothle.js",
+      "pluginId": "cordova-plugin-bluetoothle",
+      "clobbers": [
+        "window.bluetoothle"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -444,6 +452,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-advanced-geolocation": "1.6.2",
     "cordova-plugin-bluetooth-serial": "0.4.7",
     "cordova-plugin-listpicker": "2.2.2",
-    "cordova-plugin-bluetooth-geolocation": "0.0.1"
+    "cordova-plugin-bluetooth-geolocation": "0.0.1",
+    "cordova-plugin-bluetoothle": "4.5.14"
   };
 });
