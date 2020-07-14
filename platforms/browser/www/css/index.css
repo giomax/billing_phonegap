@@ -89,7 +89,7 @@ label{
 }
 
 .landButtons button{
-	width:375px;
+	width:455px;
 	font-size:13px;
 	margin-top:15px;
 	display:block;
@@ -155,4 +155,47 @@ label{
 	left:0;
 	width:100%;
 	height:100vh;	
+}
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.bpg_arial{
+	font-family:bpg_arial;
+}
+
+.upload-btn-wrapper input[type=file]{
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.ijaraFiles {
+    list-style: none;
+    margin: 0px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0px;
+    padding-bottom: 20px;
+}
+
+.ijaraFiles li {
+    position: relative;
+    margin-top: 15px;
+}
+.ijaraFiles a {
+    overflow: hidden;
+    width: 80%;
+    display: block;
+}
+
+.ijaraFiles .fileDelete {
+    z-index: 500;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }

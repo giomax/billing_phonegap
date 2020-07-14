@@ -1,5 +1,5 @@
-//var base_url = "http://82.211.132.146:1881/api/";
-var base_url = "http://192.168.1.103:1881/api/";
+//var base_url = "http://billing.com.ge/api/";
+var base_url = "http://82.211.132.146:1881/api/";
 var storage = window.localStorage;
 var app = {
 	debug:function(text){
@@ -88,90 +88,7 @@ var app = {
 		  });
 		}
 	},
-    receivedEvent: function(id) {
-		
-		/*
-		AdvancedGeolocation.start(function(data){
-
-                try{
-
-                    var jsonObject = JSON.parse(data);
-
-                    switch(jsonObject.provider){
-                        case "gps":
-                            if(jsonObject.latitude != "0.0"){
-                                console.log("GPS location");
-                                console.log("GPS location detected - lat:" +
-                                    jsonObject.latitude + ", lon: " + jsonObject.longitude +
-                                    ", accuracy: " + jsonObject.accuracy);
-                                
-                            }
-                            break;
-
-                        case "network":
-                            if(jsonObject.latitude != "0.0"){
-                                
-                                console.log("Network ");
-                                console.log("Network location detected - lat:" +
-                                    jsonObject.latitude + ", lon: " + jsonObject.longitude +
-                                    ", accuracy: " + jsonObject.accuracy);
-                               
-                            }
-                            break;
-
-                        case "satellite":
-                            console.log("Satellites  ");
-                            console.log("Satellites detected " + (Object.keys(jsonObject).length - 1));
-                            console.log("Satellite meta-data: " + data);
-                          
-                            break;
-
-                        case "cell_info":
-						console.log("CELL cell_info -------------------");
-                            console.log("cell_info JSON: " + data);
-                            break;
-
-                        case "cell_location":
-							console.log("CELL LOCATION -------------------");
-                            console.log("cell_location JSON: " + data);
-                            break;
-
-                        case "signal_strength":
-                            console.log("SIGNAL STRENGTH: --------------------");
-                            console.log("Signal strength JSON: " + data);
-                            break;
-                    }
-                }
-                catch(exc){
-                    console.log("Invalid JSON: " + exc);
-                }
-            },
-            function(error){
-                console.log("Error JSON: " + JSON.stringify(error));
-                var e = JSON.parse(error);
-                console.log("Error no.: " + e.error + ", Message: " + e.msg + ", Provider: " + e.provider);
-            },
-            /////////////////////////////////////////
-            //
-            // These are the required plugin options!
-            // README has API details
-            //
-            /////////////////////////////////////////
-            {
-                "minTime":0,
-                "minDistance":0,
-                "noWarn":false,
-                "providers":"all",
-                "useCache":true,
-                "satelliteData":true,
-                "buffer":true,
-                "bufferSize":10,
-                "signalStrength":false
-            });
-
-		*/
-		
-		
+    receivedEvent: function(id) {		
 		var networkState = navigator.connection.type;
 		app.debug("-------------- NETWORK");
 		app.debug(networkState);
@@ -332,10 +249,103 @@ var app = {
 						}
 					}).done(function(data){
 							$('.modal:visible').modal('hide').remove();
+							$('.app').hide();
 							$('body').append("<div class='gis_map'></div>");
 							$('.gis_map').html(data);
 					});
 			
 		});
+		
+		$(document).on('change', '.change_district',function(){
+	 var type = $(this).data('type');
+		 var $this = $(this);
+		
+		 //1 radio
+		 //2 select
+		 //3 select
+		 $.ajax({
+				  method: 'POST',
+				  url: base_url+'auth/retreive_channels',
+				  headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },			
+					data:{
+						  'district_id':$('[name="district_id"]').val(),
+						  'type':type,
+					  },			
+		  }).done(function( data) {
+				if(type == 1){
+				  $('.channels').html(data);
+				}
+				if(type == 2){
+					$('[name="channel_id"]')[0].selectize.destroy();
+					$('[name="channel_id"] option:not(:first-child)').remove();
+	
+				$('[name="channel_id"]').append(data);			
+				reform('[name="channel_id"]','select');
+				}
+				if(type == 3){
+					$('.change_channel, .for_channel_id').remove();
+					$('.change_first_channel, .for_first_channel_id').remove();
+					$('.change_second_channel, .for_second_channel_id').remove();
+					$('.change_third_channel, .for_third_channel_id').remove();
+					
+					$('.connect_channels').remove();
+					
+					$this.after('<label class="for_channel_id marginTop">მაგისტრალური არხი</label><select class="form-control non change_channel form-control-sm" name="channel_id" data-type="3"><option value=""></option>'+data+'</select>');
+				}
+            });
+	});
+	
+	$(document).on('change', '[name="inspection_file"]',function(){
+		if($('.ijaraFiles li').length == 25){
+			swal("თქენ აღარ შეგიძლიათ მეტი ფაილის ატვირთვა, მაქსიმუმი ფაილების რაოდენობა 25");
+			return false;
+		}
+	$this = $(this).parent();
+	
+	$('.btnUpload:visible').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> იტვირთება...').prop('disabled',true);
+	
+	var name = $(this).attr('name');
+        var fd = new FormData();
+        var files = $(this)[0].files[0];
+        fd.append('file',files);
+
+        $.ajax({
+            url: base_url+'auth/upload_inspection',
+            type: 'post',
+            data: fd,
+			headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },			
+            contentType: false,
+            processData: false,
+			error:function(data){
+				swal("შეცდომა: გაფართოების ფაილი ვერ იტვირთება. შეგიძლიათ ['jpg','jpeg','png','pdf','doc','docx','xls','xlsx'] გაფართების ფაილების ატვირთვა.");
+			
+	$('.btnUpload:visible').html('ატვირთვა').prop('disabled',false);
+			},
+        }).done(function(data){
+			$this.find('.ijaraFiles').append("<li><a href='"+data[1]+"' target='_BLANK'>"+data[0]+"</a><input name='"+name+"_id[]' type='hidden' value='"+data[1]+"'/><input name='"+name+"_file[]' type='hidden' value='"+data[0]+"'/><span class='fileDelete btn btn-sm btn-danger'>X</span></li>");
+			$("[name='inspection_file']").val('');
+			$('.btnUpload:visible').html('ატვირთვა').prop('disabled',false);
+		
+		});
+    });
+	
+	$(document).on('click', '.ijaraFiles .fileDelete',function(){
+		$this = $(this);
+			swal({
+		title:'დარწმუნებული ხართ რომ გსურთ ფაილის წაშლა?',
+		confirmButtonText:'დიახ',
+		cancelButtonText: 'არა',
+  showCancelButton: true,
+  showCloseButton: true
+		}).then(function(result){
+			if(result.value){
+				$this.parent().remove();
+				$("[name='in_moijare']").val('');
+				$("[name='in_contract']").val('');
+			
+			}
+		});
+	});
+
 	}
 };

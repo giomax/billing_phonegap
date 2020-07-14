@@ -16,7 +16,9 @@
 		position:relative;
 		top:50px;
 	}
-	
+	.form-control{
+		font-family:bpg_arial;
+	}
 	.esri-popup__button.esri-popup__button--dock,.esri-popup__navigation{
 		display:none;
 	}
@@ -305,6 +307,7 @@
 	}
 	
 	.esri-feature__main-container a{
+		font-family:bpg_arial;
 		color:white;
 		background:#007bff;
 		padding:10px;

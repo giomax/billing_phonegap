@@ -15,6 +15,22 @@ module.exports = [
         "runs": true
     },
     {
+        "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+        "id": "cordova-plugin-ble-central.ble",
+        "pluginId": "cordova-plugin-ble-central",
+        "clobbers": [
+            "ble"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-ble-central/src/browser/BLECentralPlugin.js",
+        "id": "cordova-plugin-ble-central.BLECentralPlugin",
+        "pluginId": "cordova-plugin-ble-central",
+        "merges": [
+            "ble"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js",
         "id": "cordova-plugin-bluetooth-serial.bluetoothSerial",
         "pluginId": "cordova-plugin-bluetooth-serial",
@@ -28,6 +44,22 @@ module.exports = [
         "pluginId": "cordova-plugin-bluetooth-serial",
         "clobbers": [
             "window.bluetoothSerial"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-bluetooth-status/BluetoothStatus.js",
+        "id": "cordova-plugin-bluetooth-status.BluetoothStatus",
+        "pluginId": "cordova-plugin-bluetooth-status",
+        "clobbers": [
+            "cordova.plugins.BluetoothStatus"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-bluetoothle/www/bluetoothle.js",
+        "id": "cordova-plugin-bluetoothle.BluetoothLe",
+        "pluginId": "cordova-plugin-bluetoothle",
+        "clobbers": [
+            "window.bluetoothle"
         ]
     },
     {
@@ -442,38 +474,6 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
-    },
-    {
-        "file": "plugins/cordova-plugin-bluetoothle/www/bluetoothle.js",
-        "id": "cordova-plugin-bluetoothle.BluetoothLe",
-        "pluginId": "cordova-plugin-bluetoothle",
-        "clobbers": [
-            "window.bluetoothle"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-bluetooth-status/BluetoothStatus.js",
-        "id": "cordova-plugin-bluetooth-status.BluetoothStatus",
-        "pluginId": "cordova-plugin-bluetooth-status",
-        "clobbers": [
-            "cordova.plugins.BluetoothStatus"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-ble-central/www/ble.js",
-        "id": "cordova-plugin-ble-central.ble",
-        "pluginId": "cordova-plugin-ble-central",
-        "clobbers": [
-            "ble"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-ble-central/src/browser/BLECentralPlugin.js",
-        "id": "cordova-plugin-ble-central.BLECentralPlugin",
-        "pluginId": "cordova-plugin-ble-central",
-        "merges": [
-            "ble"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -481,10 +481,13 @@ module.exports.metadata =
 {
     "cordova-plugin-advanced-geolocation": "1.6.2",
     "cordova-plugin-battery-status": "1.2.5",
+    "cordova-plugin-ble-central": "1.2.5",
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-geolocation": "2.4.3",
     "cordova-plugin-bluetooth-geolocation": "0.0.1",
     "cordova-plugin-bluetooth-serial": "0.4.7",
+    "cordova-plugin-bluetooth-status": "1.0.4",
+    "cordova-plugin-bluetoothle": "4.5.14",
     "cordova-plugin-camera": "2.4.1",
     "cordova-plugin-device": "1.1.7",
     "cordova-plugin-dialogs": "1.3.4",
@@ -496,10 +499,7 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-vibration": "2.1.6",
-    "cordova-plugin-whitelist": "1.3.4",
-    "cordova-plugin-bluetoothle": "4.5.14",
-    "cordova-plugin-bluetooth-status": "1.0.4",
-    "cordova-plugin-ble-central": "1.2.5"
+    "cordova-plugin-whitelist": "1.3.4"
 }
 // BOTTOM OF METADATA
 });

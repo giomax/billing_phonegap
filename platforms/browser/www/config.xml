@@ -8,6 +8,7 @@
         AG Team
     </author>
     <content src="index.html" />
+    <gap:plugin name="cordova-plugin-ble-central" source="npm" />
     <icon src="icon.png" />
     <splash src="icon.png" />
     <access origin="*" />
