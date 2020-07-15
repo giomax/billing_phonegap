@@ -241,8 +241,7 @@ var app = {
 			if(!service_center_id){
 				$('[name="service_center_id"]').addClass('red_border');
 				return false;
-			}
-			storage.setItem('menu',active_menu);
+			}			
 			$.ajax({
 					  method: "POST",
 					  url: base_url+'auth/load_map',
@@ -266,7 +265,7 @@ var app = {
 			var service = $('[name="service"]').val();
 			var id = $(this).data('id');
 			var active_menu = $('.main_menu.active').data('menu');
-			storage.setItem('menu',active_menu);
+			
 			$.ajax({
 					  method: "POST",
 					  url: base_url+'auth/load_zoom',
