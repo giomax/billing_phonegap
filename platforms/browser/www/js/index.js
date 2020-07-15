@@ -17,6 +17,7 @@ var app = {
 		app.functions();
     },
 	page:function(page){
+		storage.setItem('menu',page);
 		$('.app').html();
 		if(page == 'login'){
 			if($('.login').length > 0)
@@ -81,7 +82,7 @@ var app = {
 			  type: "POST",
 			 },
 			 columns: columns,
-			order: [[0, 'asc']],
+			order: [[0, 'desc']],
 			language: {
                 url: lang_url
             },
@@ -99,7 +100,11 @@ var app = {
 		app.debug("-------------- TOKEN");
 				
 		if(storage.getItem('access_token')){
-			return app.page('home');
+			if(storage.getItem('menu')){
+				return app.page(storage.getItem('menu'));
+			}else{
+				return app.page('home');
+			}
 		}
 		
 		//first STEP LOGIN PAGE
@@ -228,6 +233,7 @@ var app = {
 			var service_center_id = $('[name="service_center_id"]').val();
 			var service = $('[name="service"]').val();
 			var type = $(this).data('type');
+			
 			if(!region_id){
 				$('[name="region_id"]').addClass('red_border');
 				return false;
@@ -236,7 +242,7 @@ var app = {
 				$('[name="service_center_id"]').addClass('red_border');
 				return false;
 			}
-			
+			storage.setItem('menu',active_menu);
 			$.ajax({
 					  method: "POST",
 					  url: base_url+'auth/load_map',
@@ -246,6 +252,28 @@ var app = {
 							'service_center_id':service_center_id,
 							'service':service,
 							'type':type
+						}
+					}).done(function(data){
+							$('.modal:visible').modal('hide').remove();
+							$('.app').hide();
+							$('body').append("<div class='gis_map'></div>");
+							$('.gis_map').html(data);
+					});
+			
+		});
+		
+		$(document).on('click','.zoom',function(){			
+			var service = $('[name="service"]').val();
+			var id = $(this).data('id');
+			var active_menu = $('.main_menu.active').data('menu');
+			storage.setItem('menu',active_menu);
+			$.ajax({
+					  method: "POST",
+					  url: base_url+'auth/load_zoom',
+						headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },			
+						data:{
+							'region_id':region_id,
+							'service_center_id':service_center_id,
 						}
 					}).done(function(data){
 							$('.modal:visible').modal('hide').remove();
@@ -346,6 +374,5 @@ var app = {
 			}
 		});
 	});
-
 	}
 };

@@ -48,7 +48,7 @@ var columns = [
                   {data: 'id', name: 'id',visible:false},
 				      {data: 'id', name: 'id', visible: true, orderable:false,searchable:false,render:function(data,e,row){
 var id = row.id;
-						data = '<a href="'+base_url+'Inspection/'+id+'/zoom" class="zoom" target="_BLANK"><i class="fas fa-search-plus"></i></a>';
+						data = '<a class="zoom" target="_BLANK" data-id="'+id+'" ><i class="fas fa-search-plus"></i></a>';
 						return data;					 
 					 return data;
 				  }},
