@@ -1,6 +1,7 @@
 //var base_url = "http://billing.com.ge/api/";
 var base_url = "http://82.211.132.146:1881/api/";
 var storage = window.localStorage;
+var datatable;
 var app = {
 	debug:function(text){
 		console.log(text);
@@ -65,7 +66,7 @@ var app = {
 		
 		if($('#dataTable').length > 0){
 		lang_url = "js/dataTables.geo.lang";
-		var datatable = $('#dataTable').DataTable({
+		datatable = $('#dataTable').DataTable({
 		lengthMenu: [25,50,100,500],
 			processing: true,
 			serverSide: true,	
@@ -178,6 +179,89 @@ var app = {
 			$('#delete').modal('show');
 		});
 		
+		$(document).on('click', '#delete .btn-primary',function(){
+			 $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> იტვირთება...').prop('disabled',true);
+	 
+	//load_in();
+	var id= $(this).data('id');
+	$.ajax({
+              method: "post",
+			  headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },
+              url: base_url+"auth/delete",
+              dataType:'json',			 
+			  data:{
+				  'id' : id,
+				  'status':0,
+			  }
+			  }).done(function(data){	
+				var comment = "";
+				
+					$('#delete').modal('hide');
+					if(data.code == 5){
+						swal({
+									title:data.text,
+									html:'<input class="swal2-input" name="pincode" style="margin-top:0px;" />',
+									showCancelButton: true,
+									confirmButtonText:'წაშლაზე მონიშვნა',
+										allowOutsideClick: false,
+								cancelButtonText: 'დახურვა',
+								  showCancelButton: true,
+								  showCloseButton: true,
+								  showLoaderOnConfirm: true,
+								  preConfirm:(login)=>{
+									 if(!$("[name='pincode']").val())
+									  return Swal.showValidationMessage("შეიყვანეთ პინკოდი");
+									  return new Promise(function(resolve) {	
+										pincode = $("[name='pincode']").val();
+									$.ajax({
+									  method: "post",
+									  headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },
+									  url: base_url+"auth/delete",
+									  dataType:'json',			 
+									  data:{
+										  'id' : id,
+										  'status':2,
+										  'comment' : comment,
+										  'pincode':pincode,
+										  'reg_pin':data.reg_pin
+									  }
+									}).then(function(data){
+										if(!data.code){
+											 resolve(Swal.showValidationMessage(data.text));
+										}else{		
+
+									$.ajax({
+									  method: "post",
+									  headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },
+									  url: base_url+"auth/delete",
+									  data:{
+										  'id' : id,
+										  'status':3,
+										  'code':data.code
+									  }
+									}).then(function(data){
+										
+										$('body').append("<div class='demo' style='display:none;'>"+data+"</div>");
+											datatable.draw();
+									});
+
+
+
+										
+											
+										}
+									});
+									
+								  });
+								  
+								  
+								  }
+								});
+					}
+				
+			  });
+		});
+		
 		$(document).on('click','header .nav-link',function(e){
 			e.preventDefault();
 			app.page($(this).data('menu'));
@@ -271,8 +355,7 @@ var app = {
 					  url: base_url+'auth/load_zoom',
 						headers:{'Authorization': storage.getItem('token_type')+' '+storage.getItem('access_token') },			
 						data:{
-							'region_id':region_id,
-							'service_center_id':service_center_id,
+							'id':id,
 						}
 					}).done(function(data){
 							$('.modal:visible').modal('hide').remove();

@@ -134,7 +134,7 @@ label{
 }
 
 .modal-title, .btn-secondary{
-	font-size:12px;
+	font-size:16px;
 	font-family:bpg_arial;
 }
 
@@ -198,4 +198,15 @@ label{
     position: absolute;
     top: 0px;
     right: 0px;
+}
+#delete .modal-body{
+	font-family:bpg_arial;
+}
+.append_delete i{
+	font-size:16px;
+	position:relative;
+	top:5px;
+}
+.swal2-popup .swal2-actions{
+	font-family:bpg_arial;
 }

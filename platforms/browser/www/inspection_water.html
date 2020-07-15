@@ -7,8 +7,11 @@
 
 
 <div class='floatRight landButtons'>	
-	<button class="btn btn-primary btn-sm choose_inspection" href="#" data-type='2'>მიწის მომზადება განაცხადისათვის - კოორდინატებით</button>
-	<button class="btn btn-primary btn-sm choose_inspection" href="#" data-type='3'>მიწის მომზადება განაცხადისათვის - მონიშნვით</button>
+	<button class="btn btn-primary btn-sm choose_inspection" href="#" data-type='1'>მიწის მომზადება - საჯარო რეესტრის მონაცემების სინქრონიზაცია</button>
+	
+	<button class="btn btn-primary btn-sm choose_inspection" href="#" data-type='2'>მიწის მომზადება - კოორდინატებით</button>
+	
+	<button class="btn btn-primary btn-sm choose_inspection" href="#" data-type='3'>მიწის მომზადება - მონიშნვით</button>
 </div>
 
 
@@ -45,7 +48,7 @@ var columns = [
                   {data: 'id', name: 'id',visible:false},
 				      {data: 'id', name: 'id', visible: true, orderable:false,searchable:false,render:function(data,e,row){
 var id = row.id;
-						data = '<a href="'+base_url+'Inspection/'+id+'/zoom" class="zoom" target="_BLANK"><i class="fas fa-search-plus"></i></a>';
+						data = '<a class="zoom" target="_BLANK" data-id="'+id+'" ><i class="fas fa-search-plus"></i></a>';
 						return data;					 
 					 return data;
 				  }},
@@ -89,7 +92,7 @@ var id = row.id;
 				  function modal(i){
 					  string = texts[i];
 					 
-					$('.modal-body').html(string);
+					$('#desc .modal-body').html(string);
 					$("#desc").modal("show");
 				  }
 </script>	
