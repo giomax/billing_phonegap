@@ -126,7 +126,7 @@
 #addTemplatesDiv{
 	right:22px;
 	position:absolute;
-	top:70px;
+	top:85px;
 	z-index:10;
 	width:400px;
 	padding:10px;
@@ -584,4 +584,16 @@
 .create_polygon{
 	bottom:80px;
 	display:none;
+}
+
+.rButtonStyle{
+    position: absolute!important;
+    right: 0px!important;
+    width: 90px!important;
+    background: white!important;
+    font-family: bpg_arial;
+    top: 50px;
+    font-size: 12px;
+    height: 25px;
+    color: black!important;
 }

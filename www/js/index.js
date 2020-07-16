@@ -456,5 +456,16 @@ var app = {
 			}
 		});
 	});
+	
+	$(document).on('click','.hidePopup',function(){
+		if($('#addTemplatesDiv').is(':visible')){
+			$('#addTemplatesDiv').hide();
+			$(this).text('გამოჩენა');
+		}else{
+			$(this).text('დამალვა');
+			$('#addTemplatesDiv').show();
+		}
+	});
+	
 	}
 };
