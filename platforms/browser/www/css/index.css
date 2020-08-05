@@ -1,0 +1,212 @@
+@font-face {
+  font-family: bpg_arial;
+  src: url("../fonts/bpg_arial_2009.ttf");
+}
+@font-face {
+  font-family: bpg_banner_caps;
+  src: url("../fonts/bpg_banner_caps.ttf");
+}
+.bpg_arial{
+	font-family:'bpg_arial';
+}
+
+@font-face {
+  font-family: bpg_arial_caps;
+  src: url("../fonts/bpg_arial_caps.ttf");
+}
+.bpg_arial_caps{
+	font-family:'bpg_arial_caps';
+}
+
+@font-face {
+  font-family: bpg_mtavruli;
+  src: url("../fonts/bpg_nino_mtavruli_normal.ttf");
+}
+.bpg_mtavruli{
+	font-family:'bpg_mtavruli';
+}
+
+.marginTop{
+	margin-top:20px;
+}
+
+.card-header {
+    font-family: bpg_mtavruli;
+}
+
+label{
+	font-family:bpg_arial_caps;
+}
+
+.btn-primary{
+	font-family:bpg_arial;
+}
+
+.login{
+	display:none;
+}
+
+.swal2-title{
+	font-size:13px!important;
+	font-family:bpg_arial;
+}
+
+.logo{
+	width:45px;
+}
+.navbar-brand{
+	font-family:bpg_banner_caps;
+}
+.rightMenu li {
+	margin-left:15px;
+}
+.rightMenu li a{
+	color:black;
+}
+.rightMenu li i{
+	color:white;
+}
+.bg-light {
+    background: #17a2b8 !important;
+}
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.bg-light a {
+    color: white !important;
+	padding: 2px;
+    font-size: 12px;
+	font-family:bpg_arial_caps;
+}
+
+.floatRight {
+	float:right;
+}
+
+.landButtons button{
+	width:455px;
+	font-size:13px;
+	margin-top:15px;
+	display:block;
+}
+
+.content{
+	overflow:hidden;
+}
+
+.my_table{
+	overflow:hidden;
+	position:relative;
+	clear:both;
+	padding:10px;
+	font-family:bpg_arial;
+}
+.pagination, #dataTable_filter{
+	float:right;
+}
+
+.table thead th, .table td{
+	font-size:12px;
+}
+
+.dataTables_length, .dataTables_filter{
+	font-size:12px;
+}
+
+[name="dataTable_length"]{
+	width:auto;
+	display:inline-block;
+}
+
+.hlink {
+    color: #007bff !important;
+    text-align: center;
+    cursor: pointer;
+}
+
+.table a{
+	color:black;
+}
+
+.modal-title, .btn-secondary{
+	font-size:16px;
+	font-family:bpg_arial;
+}
+
+.bg-light a.active{
+    background: white !important;
+    color: #17a2b8 !important;
+}
+
+.red_border{
+	border:1px solid red;
+}
+
+.gis_map{
+	background:white;
+	z-index:100;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100vh;	
+}
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.bpg_arial{
+	font-family:bpg_arial;
+}
+
+.upload-btn-wrapper input[type=file]{
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.ijaraFiles {
+    list-style: none;
+    margin: 0px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0px;
+    padding-bottom: 20px;
+}
+
+.ijaraFiles li {
+    position: relative;
+    margin-top: 15px;
+}
+.ijaraFiles a {
+    overflow: hidden;
+    width: 80%;
+    display: block;
+}
+
+.ijaraFiles .fileDelete {
+    z-index: 500;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+#delete .modal-body{
+	font-family:bpg_arial;
+}
+.append_delete i{
+	font-size:16px;
+	position:relative;
+	top:5px;
+}
+.swal2-popup .swal2-actions{
+	font-family:bpg_arial;
+}

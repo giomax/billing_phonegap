@@ -1,0 +1,160 @@
+<div class='content'>
+
+<input type='hidden' name='service' value='1'/>
+
+
+
+
+
+<div class='floatRight landButtons'>	
+	<button class="btn btn-primary btn-sm choose_inspection" href="#" data-type='1'>მიწის მომზადება - საჯარო რეესტრის მონაცემების სინქრონიზაცია</button>
+	
+	<button class="btn btn-primary btn-sm choose_inspection" href="#" data-type='2'>მიწის მომზადება - კოორდინატებით</button>
+	
+	<button class="btn btn-primary btn-sm choose_inspection" href="#" data-type='3'>მიწის მომზადება - მონიშნვით</button>
+</div>
+
+
+
+<div class='my_table'>
+
+  <table id="dataTable" class="table table-striped table-bordered table-hover with_actions">
+        <thead>
+            <tr>
+                <th>ID</th>
+				 <th>მიწის ნახვა რუკაზე</th>
+                <th>ID</th>
+                <th>შექმნის თარიღი</th>
+                <th>ჩანაწერის ავტორი</th>
+                <th>რეგიონი</th>
+                <th>სერვისცენტრი</th>
+                <th>უბანი</th>
+                <th>მაგ.არხი</th>
+                <th>მონიშნულის. ფართობი</th>
+                <th>კომენტარი</th>
+                <th>სურათები</th>						
+				<th width='150px'>მოქმედება</th>				
+			</tr>
+        </thead>
+        <tbody>
+		</tbody>
+	</table>
+</div>
+
+
+<script>
+texts = [];
+var columns = [
+                  {data: 'id', name: 'id',visible:false},
+				      {data: 'id', name: 'id', visible: true, orderable:false,searchable:false,render:function(data,e,row){
+var id = row.id;
+						data = '<a class="zoom" target="_BLANK" data-id="'+id+'" ><i class="fas fa-search-plus"></i></a>';
+						return data;					 
+					 return data;
+				  }},
+                  {data: 'code', name: 'code'},
+                  {data: 'created_at', name: 'created_at'},
+                  {data: 'uname', name: 'uname',searchable:false,orderable:false},
+                  {data: 'region', name: 'region',searchable:false,orderable:false,render:function(data){
+					  return data.name
+				  }}, 
+				  {data: 'service_center', name: 'service_center',searchable:false,orderable:false,render:function(data){
+					  return data.name
+				  }}, 
+				  {data: 'district', name: 'district',searchable:false,orderable:false,render:function(data){
+					  return data.name
+				  }},  
+				  {data: 'channel', name: 'channel',searchable:false,orderable:false,render:function(data){
+					  return data.name
+				  }},
+               
+                
+                  {data: 'land_area', name: 'land_area'},
+                  {data: 'comment', name: 'comment',searchable:false, orderable:false, render:function(data,e,row){
+					texts[row.id] = data;
+					  return "<a class='page-link hlink' onclick='modal("+row.id+")' >ნახვა</a>";
+				  }}, 
+				  {data: 'pictures', name: 'pictures',searchable:false, orderable:false, render:function(data,e,row){
+					  return "<a class='page-link hlink pic_open' data-id='"+row.id+"' >ნახვა</a>";
+				  }},
+              
+				  {orderable : false, searchable:false, render:function(data,e,row){
+						var id = row.id;
+						data = '';
+						data += '<a href="#" class="append_delete" data-table="Inspection" data-id="'+id+'"><i class="fas fa-trash-alt"></i></a>';
+						return data;
+						}
+					}
+                  ];
+				  
+				  
+				    
+				  function modal(i){
+					  string = texts[i];
+					 
+					$('#desc .modal-body').html(string);
+					$("#desc").modal("show");
+				  }
+</script>	
+
+
+<div class="modal" tabindex="-1" role="dialog" id="desc">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">კომენტარი</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bpg_arial fontSize15">
+	  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">დახურვა</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="pictures">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">ფაილები</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bpg_arial fontSize15">
+	  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">დახურვა</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="delete">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">წაშლა</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>დარწმუნებული ხართ რომ გსურთ წაშლა</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">დიახ</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">არა</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
