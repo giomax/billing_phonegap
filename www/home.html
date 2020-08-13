@@ -31,6 +31,7 @@
                 <th>უბანი</th>
                 <th>მაგ.არხი</th>
                 <th>მონიშნულის. ფართობი</th>
+                <th>საკადასტრო კოდი</th>
                 <th>კომენტარი</th>
                 <th>სურათები</th>						
 				<th width='150px'>მოქმედება</th>				
@@ -70,6 +71,7 @@ var id = row.id;
                
                 
                   {data: 'land_area', name: 'land_area'},
+				       {data: 'cadcode', name: 'cadcode'},
                   {data: 'comment', name: 'comment',searchable:false, orderable:false, render:function(data,e,row){
 					texts[row.id] = data;
 					  return "<a class='page-link hlink' onclick='modal("+row.id+")' >ნახვა</a>";
