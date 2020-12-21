@@ -1,4 +1,4 @@
-var base_url = "http://billing.com.ge/api/";
+var base_url = "https://billing.com.ge/api/";
 //var base_url = "http://82.211.132.146:1881/api/";
 var storage = window.localStorage;
 var datatable;
