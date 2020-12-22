@@ -1,10 +1,10 @@
-var base_url = "http://billing.com.ge/api/";
+var base_url = "https://billing.com.ge/api/";
 //var base_url = "http://82.211.132.146:1881/api/";
 var storage = window.localStorage;
 var datatable;
 var app = {
 	debug:function(text){
-		console.log(text);
+		//console.log(text);
 		//$('.debug').html(text);
 	},
     initialize: function() {
@@ -16,6 +16,9 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');		
 		app.functions();
+		
+		
+
     },
 	page:function(page){
 		storage.setItem('menu',page);

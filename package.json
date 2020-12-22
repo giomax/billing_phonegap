@@ -37,6 +37,7 @@
     "platforms": []
   },
   "dependencies": {
+    "cordova-browser": "^6.0.0",
     "cordova-plugin-advanced-geolocation": "git+https://github.com/esri/cordova-plugin-advanced-geolocation.git",
     "cordova-plugin-ble-central": "1.2.5",
     "cordova-plugin-bluetooth-geolocation": "git+https://github.com/heigeo/cordova-plugin-bluetooth-geolocation.git",
